@@ -1,0 +1,152 @@
+verify:  
+  x-swagger-router-controller: oauth
+  post:
+    description: OAuth 2.0 authorize endpoint
+    summary: OAuth 2.0 authorize endpoint
+    operationId: verify
+    produces:
+    - application/json
+    parameters:
+    - name: token
+      in: formData
+      description: The token to invalidate
+      required: true
+      type: string
+    - name: scope
+      in: query
+      description: The requested scopes (space delimited)
+      type: string
+    responses:
+      '200':
+        description: Token payload
+        schema:
+          required:
+          - appId
+          - developerId
+          - scope
+          - expires_in
+          properties:
+            appId:
+              type: string
+            developerId:
+              type: string
+            scope:
+              type: string
+            expires_in:
+              type: number
+      default:
+        description: Error payload
+        schema:
+          "$ref": "#/definitions/OAuthError"
+accesstoken:  
+  x-swagger-router-controller: oauth
+  post:
+    description: OAuth 2.0 token endpoint
+    summary: OAuth 2.0 token endpoint
+    operationId: accesstoken
+    produces:
+    - application/json
+    parameters:
+    - name: scope
+      in: formData
+      description: The requested scopes (space delimited)
+      required: false
+      type: string
+    - name: username
+      in: formData
+      description: The user name
+      required: true
+      type: string
+    - name: password
+      in: formData
+      description: The password
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Token payload
+        schema:
+          "$ref": "#/definitions/OAuthToken"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "#/definitions/OAuthError"
+invalidate:  
+  x-swagger-router-controller: oauth
+  post:
+    description: OAuth 2.0 token endpoint
+    summary: OAuth 2.0 token endpoint
+    operationId: invalidate
+    produces:
+    - application/json
+    parameters:
+    - name: token
+      in: formData
+      description: The token to invalidate
+      required: true
+      type: string
+    - name: authorization
+      in: header
+      description: The authorization header
+      required: false
+      type: string
+    responses:
+      '200':
+        description: Success response
+        schema:
+          required:
+          - message
+          properties:
+            message:
+              type: string
+      default:
+        description: Error payload
+        schema:
+          "$ref": "#/definitions/OAuthError"
+refresh:  
+  x-swagger-router-controller: oauth
+  post:
+    description: OAuth 2.0 refresh token endpoint
+    summary: OAuth 2.0 refresh token endpoint
+    operationId: refresh
+    produces:
+    - application/json
+    parameters:
+    - name: refresh_token
+      in: formData
+      description: The refresh token
+      required: true
+      type: string
+    - name: authorization
+      in: header
+      description: The authorization header
+      required: false
+      type: string
+    responses:
+      '200':
+        description: Token payload
+        schema:
+          "$ref": "#/definitions/OAuthToken"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "#/definitions/OAuthError"
+definitions:
+  OAuthToken:
+    required:
+    - access_token
+    - token_type
+    - expires_in
+    properties:
+      access_token:
+        type: string
+      token_type:
+        type: string
+      expires_in:
+        type: integer
+  OAuthError:
+    required:
+    - message
+    properties:
+      message:
+        type: string

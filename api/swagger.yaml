@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  description: Simple API to manage pets, laboratory and samples.
+  version: 0.0.1
+  title: Laboratoire
+securityDefinitions:
+  oauth2:
+    type: oauth2
+    flow: application
+    tokenUrl: http://localhost:3000/accesstoken
+    scopes:
+      $ref: "../env/current.json#/oauth/scopes"
+x-volos-resources:
+  oauth2:
+    provider: "volos-oauth-redis"
+    options:
+      passwordCheck:
+        helper: helper
+        function: passwordCheck
+      ## Needed for Redis provider
+      encryptionKey: 
+        $ref: "../env/current.json#/oauth/encryptionKey"
+      host:
+        $ref: "../env/current.json#/redis/host"
+      port:
+        $ref: "../env/current.json#/redis/port"
+      ## Apply to both providers
+      tokenLifetime: 
+        $ref: "../env/current.json#/oauth/tokenLifetime"
+      validGrantTypes:
+        - client_credentials
+# during dev, should point to your local machine
+host: localhost:3000
+# basePath prefixes all resource paths 
+basePath:
+  $ref: "../env/current.json#/api/basePath"
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /users:
+    $ref: "routes/user/route.yaml#/createUser"
+  /users/{id}:
+    $ref: "routes/user/route.yaml#/getUser"
+  /users/{id}/settings:
+    $ref: "routes/user/route.yaml#/settings"
+  /users/invite:
+    $ref: "routes/user/route.yaml#/invite"
+  /users/password:
+    $ref: "routes/user/route.yaml#/changePassword"
+  /users/me:
+    $ref: "routes/user/route.yaml#/getMe"
+  /verify:
+    $ref: "routes/oauth.yaml#/verify"
+  /login:
+    $ref: "routes/oauth.yaml#/accesstoken"
+  /invalidate:
+    $ref: "routes/oauth.yaml#/invalidate"
+  /refresh:
+    $ref: "routes/oauth.yaml#/refresh"
+  /clients:
+    $ref: "routes/client/route.yaml#/createClient"
+  /clients/{id}:
+    $ref: "routes/client/route.yaml#/getClient"
+  /species:
+    $ref: "routes/specie/route.yaml#/createSpecie"
+  /species/{id}:
+    $ref: "routes/specie/route.yaml#/getSpecie"
+  /breeds:
+    $ref: "routes/breed/route.yaml#/createBreed"
+  /breeds/{id}:
+    $ref: "routes/breed/route.yaml#/getBreed"
+  /patients:
+    $ref: "routes/patient/route.yaml#/createPatient"
+  /patients/{id}:
+    $ref: "routes/patient/route.yaml#/getPatient"
+  /swagger:
+    x-swagger-pipe: swagger_raw

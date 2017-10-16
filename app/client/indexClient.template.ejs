@@ -1,0 +1,17 @@
+<div layout-margin layout="row" layout-align="center center">
+  <md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="client in indxClientCtrl.clients">
+        <div class="md-list-client-text">
+          <h3>{{client.firstName}} {{client.lastName}}</h3>
+          <h4>{{client.idType}}-{{client.idNumber}}</h4>
+          <p>{{client.phoneNumber}}</p>
+        </div>
+        <md-button class="md-secondary" ui-sref="modifyClient({id:client._id})">Editar</md-button>
+        <md-button class="md-secondary" ng-click="indxClientCtrl.deleteClient(client._id)">Eliminar</md-button>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>
+

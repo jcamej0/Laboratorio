@@ -1,0 +1,32 @@
+<container>
+  <row class="header">
+    <columns>
+      <spacer size="16"></spacer>
+    </columns>
+  </row>
+  <row>
+    <columns>
+      {{{{raw}}}}
+      <spacer size="16"></spacer>
+
+      <h3 class="text-center">Hola {{username}}</h3>
+      <spacer size="16"></spacer>
+      <p>Has sido agregado al equipo de Laboratoire, sigue el link para acceder a tu cuenta.</h3>
+      <spacer size="16"></spacer>
+      {{{{/raw}}}}
+      <p class="text-center"><button class="large expand" href="{{env.basePath}}reset-password?token={{{{raw}}}}{{token}}{{{{/raw}}}}">Acceder</button></p>
+      <spacer size="16"></spacer>
+      <hr/>
+      <center>
+        <menu>
+          <item href="{{env.basePath}}">{{env.webPage}}</a></item>
+          <item href="http://www.facebook.com/{{env.facebook}}">Facebook</a></item>
+          <item href="http://www.twitter.com/{{env.twitter}}">Twitter</a></item>
+          <item href=tel:{{env.phone}}>{{env.phone}}</a></item>
+        </menu>
+      </center>
+    </columns>
+  </row>
+
+  <spacer size="16"></spacer>
+</container>

@@ -1,0 +1,43 @@
+PatientModel:
+  required:
+    - name
+    - birthDate
+  properties:
+    name:
+      type: string
+    birthDate:
+      type: string
+    breed:
+      type: string
+    updatedAt:
+      type: string
+      format: date-time
+    createdAt:
+      type: string
+      format: date-time
+    deleteAt:
+      type: ['string','null']
+PatientModelCreate:
+  required:
+    - name
+    - breed
+  properties:
+    name:
+      "$ref": "#/PatientModel/properties/name"
+    breed:
+      "$ref": "#/PatientModel/properties/breed"
+    deleteAt:
+      "$ref": "#/PatientModel/properties/deleteAt"
+ModifyPatientModel:
+  properties:
+    name:
+      "$ref": "#/PatientModel/properties/name"
+    breed:
+      "$ref": "#/PatientModel/properties/breed"
+DeletePatientModel:
+  properties:
+    name:
+      "$ref": "#/PatientModel/properties/name"
+    breed:
+      "$ref": "#/PatientModel/properties/breed"
+$ref: ../responses.yaml

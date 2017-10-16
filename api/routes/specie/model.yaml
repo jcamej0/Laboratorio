@@ -1,0 +1,37 @@
+SpecieModel:
+  required:
+    - name
+    - active
+  properties:
+    name:
+      type: string
+    active:
+      type: boolean
+    updatedAt:
+      type: string
+      format: date-time
+    createdAt:
+      type: string
+      format: date-time
+SpecieModelCreate:
+  required:
+    - name
+    - active
+  properties:
+    name:
+      "$ref": "#/SpecieModel/properties/name"
+    active:
+      "$ref": "#/SpecieModel/properties/active"
+ModifySpecieModel:
+  properties:
+    name:
+      "$ref": "#/SpecieModel/properties/name"
+    active:
+      "$ref": "#/SpecieModel/properties/active"
+DeleteSpecieModel:
+  properties:
+    name:
+      "$ref": "#/SpecieModel/properties/name"
+    active:
+      "$ref": "#/SpecieModel/properties/active"
+$ref: ../responses.yaml

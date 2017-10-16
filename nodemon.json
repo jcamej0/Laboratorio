@@ -1,0 +1,3 @@
+{
+  "ignore": ["/api/swagger/swagger.yaml", "/env/current.json", "/email/src/data"]
+}

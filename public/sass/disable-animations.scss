@@ -1,0 +1,6 @@
+.disable-animations{
+  * {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}

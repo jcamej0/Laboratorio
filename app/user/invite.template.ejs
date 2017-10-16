@@ -1,0 +1,73 @@
+<div layout-margin layout="row" layout-align="center center">
+  <div md-whiteframe="4" flex="30">
+    <md-toolbar class="md-primary" layout="row">
+      <h2 class="md-toolbar-tools">
+        Invitar
+      </h2>
+    </md-toolbar>
+    <md-content layout-padding="layout-padding">
+      <form name="inviteCtrl.inviteForm" novalidate ng-submit="inviteCtrl.inviteForm.$valid && inviteCtrl.enviar()">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Tipo</label>
+            <md-select ng-model="inviteCtrl.newUser.idType" name="idType" required>
+              <md-option value="v">
+                V
+              </md-option>
+              <md-option value="e">
+                E
+              </md-option>
+              <md-option value="p">
+                P
+              </md-option>
+              <md-option value="j">
+                J
+              </md-option>
+            </md-select>
+             <form-validation errors="inviteCtrl.inviteForm.idType.$error">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Cedula</label>
+            <input ng-model="inviteCtrl.newUser.idNumber" name="idNumber" type="number" maxlength="8" minlength="7" required>
+            <form-validation errors="inviteCtrl.inviteForm.idNumber.$error">
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+          <label>Nombre</label>
+          <input ng-model="inviteCtrl.newUser.firstName" name="name" maxlength="25" minlength="3" required>
+          <form-validation errors="inviteCtrl.inviteForm.name.$error">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Apellido</label>
+          <input ng-model="inviteCtrl.newUser.lastName" name="lastName" maxlength="25" minlength="3" required>
+          <form-validation errors="inviteCtrl.inviteForm.lastName.$error">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Correo Electronico</label>
+          <input ng-model="inviteCtrl.newUser.email" name="emailfield" type="email" maxlength="30" minlength="3" required>
+          <form-validation errors="inviteCtrl.inviteForm.emailfield.$error">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Rol</label>
+            <md-select ng-model="inviteCtrl.newUser.rol" name="rol" required>
+              <md-option value="administrador">
+                Administrador
+              </md-option>
+              <md-option value="empleado">
+                Empleado
+              </md-option>
+            </md-select>
+            <form-validation errors="inviteCtrl.inviteForm.rol.$error">
+          </md-input-container>
+        <div layout="row" layout-sm="column" layout-align="center center">
+          <md-button type="submit" class="md-raised md-primary">
+            Enviar
+          </md-button>
+          <md-button class="md-raised" ng-href="home">
+            Salir
+          </md-button>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>

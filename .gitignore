@@ -1,0 +1,28 @@
+# NPM and JSPM packages
+/node_modules
+/bower_components
+
+# Sublime Related
+/npm-debug.log
+
+# Generated Swagger File
+/api/swagger/swagger.yaml
+
+# Gulp Builds
+/public/build
+/email/dist
+
+# Editor plugging files
+/.sublime-gulp.cache
+/sublime-gulp.log
+
+# Swagger node
+/credentials.json
+
+# Local Enviroment
+/env/develop.json
+/env/current.json
+/email/src/data
+
+# Test Related
+/api/mocks/cached

@@ -1,0 +1,85 @@
+ClientModel:
+  required:
+    - email
+    - idNumber
+    - idType
+    - firstName
+    - lastName
+  properties:
+    email:
+      type: string
+      format: email
+    idNumber:
+      type: integer
+      format: int32
+    idType:
+      type: string
+      enum:
+      - v
+      - e
+      - j
+      - p
+    firstName:
+      type: string
+    lastName:
+      type: string
+    phoneNumber:
+      type: integer
+      format: int32
+    updatedAt:
+      type: string
+      format: date-time
+    createdAt:
+      type: string
+      format: date-time
+    deleteAt:
+      type: ['string','null']
+ClientModelCreate:
+  required:
+    - email
+    - idNumber
+    - idType
+    - firstName
+    - lastName
+  properties:
+    email:
+      "$ref": "#/ClientModel/properties/email"
+    idNumber:
+      "$ref": "#/ClientModel/properties/idNumber"
+    idType:
+      "$ref": "#/ClientModel/properties/idType"
+    firstName:
+      "$ref": "#/ClientModel/properties/firstName"
+    lastName:
+      "$ref": "#/ClientModel/properties/lastName"
+    deleteAt:
+      "$ref": "#/ClientModel/properties/deleteAt"
+    phoneNumber:
+      "$ref": "#/ClientModel/properties/phoneNumber"
+ModifyClientModel:
+  properties:
+    email:
+      "$ref": "#/ClientModel/properties/email"
+    idNumber:
+      "$ref": "#/ClientModel/properties/idNumber"
+    idType:
+      "$ref": "#/ClientModel/properties/idType"
+    firstName:
+      "$ref": "#/ClientModel/properties/firstName"
+    lastName:
+      "$ref": "#/ClientModel/properties/lastName"
+    phoneNumber:
+      "$ref": "#/ClientModel/properties/phoneNumber"
+DeleteClientModel:
+  properties:
+    email:
+      "$ref": "#/ClientModel/properties/email"
+    idNumber:
+      "$ref": "#/ClientModel/properties/idNumber"
+    idType:
+      "$ref": "#/ClientModel/properties/idType"
+    firstName:
+      "$ref": "#/ClientModel/properties/firstName"
+    lastName:
+      "$ref": "#/ClientModel/properties/lastName"
+$ref: ../responses.yaml

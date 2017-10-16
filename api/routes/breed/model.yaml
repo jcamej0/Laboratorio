@@ -1,0 +1,46 @@
+BreedModel:
+  required:
+    - name
+    - active
+  properties:
+    name:
+      type: string
+    active:
+      type: boolean
+    species:
+      type: string
+    updatedAt:
+      type: string
+      format: date-time
+    createdAt:
+      type: string
+      format: date-time
+BreedModelCreate:
+  required:
+    - name
+    - active
+    - species
+  properties:
+    name:
+      "$ref": "#/BreedModel/properties/name"
+    active:
+      "$ref": "#/BreedModel/properties/active"
+    species:
+      "$ref": "#/BreedModel/properties/species"
+ModifyBreedModel:
+  properties:
+    name:
+      "$ref": "#/BreedModel/properties/name"
+    active:
+      "$ref": "#/BreedModel/properties/active"
+    species:
+      "$ref": "#/BreedModel/properties/species"
+DeleteBreedModel:
+  properties:
+    name:
+      "$ref": "#/BreedModel/properties/name"
+    active:
+      "$ref": "#/BreedModel/properties/active"
+    species:
+      "$ref": "#/BreedModel/properties/species"
+$ref: ../responses.yaml

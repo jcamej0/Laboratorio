@@ -1,0 +1,91 @@
+<md-content>
+  <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="MENU" ng-click="homeCtrl.toggleLeft()">
+        <md-icon md-svg-icon="/bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
+      </md-button>
+      <h2>
+        <span>Laboratorie</span>
+      </h2>
+      <span flex></span>
+      <md-menu>
+        <md-button aria-label="Menu usuario" class="md-icon-button" ng-click="homeCtrl.openMenu($mdOpenMenu, $event)">
+          <md-icon md-menu-origin md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_face_48px.svg"></md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button aria-label="Configuracion" ng-click="homeCtrl.openBottomSheet()">
+              <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_settings_48px.svg"></md-icon>
+              Configuracion
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button aria-label="Editar Usuario" ng-href="home/editUser">
+              <md-icon md-svg-icon="/bower_components/material-design-icons/content/svg/production/ic_create_48px.svg"></md-icon>
+              Editar Usuario
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button aria-label="Invitar" ng-href="home/invite">
+              <md-icon md-svg-icon="/bower_components/material-design-icons/content/svg/production/ic_add_circle_outline_48px.svg"></md-icon>
+              Invitar
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button aria-label="Cambiar Password" ng-href="home/changePassword">
+              <md-icon md-svg-icon="/bower_components/material-design-icons/content/svg/production/ic_report_48px.svg"></md-icon>
+              Cambiar Password
+            </md-button>
+          </md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <md-menu-item>
+            <md-button aria-label="Log Out" ng-click="homeCtrl.logout()">
+              <md-icon md-svg-icon="/bower_components/material-design-icons/communication/svg/production/ic_vpn_key_48px.svg"></md-icon>
+                Log Out
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </md-toolbar>
+</md-content>
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+  <md-toolbar ng-click="homeCtrl.toggleLeft()">
+    <h1 class="md-toolbar-tools">Menu</h1>
+  </md-toolbar>
+  <md-content layout-margin>
+    <p>
+      This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+    </p>
+    <md-list>
+      <md-subheader class="md-toolbar-tools">Administración de Clientes</md-subheader>
+      <md-list-item ng-href="home/client">
+        <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_android_48px.svg"></md-icon>
+        <p> Nuevo cliente </p>
+      </md-list-item>
+      <md-list-item ng-href="home/clients">
+        <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_android_48px.svg"></md-icon>
+        <p> Consultar clientes </p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_android_48px.svg"></md-icon>
+        <p> Opcion 3 </p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader class="md-no-sticky">Grupo 2</md-subheader>
+      <md-list-item>
+        <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_android_48px.svg"></md-icon>
+        <p> Opcion 1 </p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_android_48px.svg"></md-icon>
+        <p> Opcion 2 </p>
+      </md-list-item>
+      <md-list-item>
+        <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_android_48px.svg"></md-icon>
+        <p> Opcion 3 </p>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>
+<div ui-view></div>

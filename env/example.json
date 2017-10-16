@@ -1,0 +1,54 @@
+{
+  "mongo":{
+    "host": "localhost",
+    "port": 27017,
+    "name": "lab"
+  },
+  "redis":{
+    "host": "127.0.0.1",
+    "port": 6379
+  },
+  "doc": {
+    "apiPath": "swagger",
+    "apiPort": "3000",
+    "docPort": "8080"
+  },
+  "api": {
+    "path": "/api/swagger/swagger.yaml",
+    "basePath": "/api/v1"
+  },
+  "mock": {
+    "key": 95356290,
+    "models": [
+      "users"
+    ]
+  },
+  "oauth": {
+    "tokenLifetime": 30000,
+    "encryptionKey": "abcdefgh12345",
+    "developer": {
+      "firstName": "Gustavo",
+      "lastName": "Laguna",
+      "email": "gustavo.gelf@gmail.com",
+      "userName": "gusgelf"
+    },
+    "app": {
+      "name": "laboratoire"
+    },
+    "scopes":{
+      "admin": "Access application sensitive information",
+      "employee": "Writes information to the application",
+      "password": "Allows user to access the system for the first time"
+    }
+  },
+  "email": {
+    "apiKey": "key-8a989327e6675d557ebb63c074ab1f3c",
+    "domain": "gustavo-coder.com",
+    "redirect": "gustavo.gelf@gmail.com",
+    "basePath": "http://localhost:5000/",
+    "webPage": "www.laboratoire.com.ve",
+    "facebook": "laboratoire",
+    "twitter": "laboratoire",
+    "phone": "+58268-2523395"
+  }
+}

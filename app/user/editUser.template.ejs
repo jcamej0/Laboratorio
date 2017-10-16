@@ -1,0 +1,56 @@
+<div layout-margin layout="row" layout-align="center center">
+  <div md-whiteframe="4" flex="30">
+    <md-toolbar class="md-primary" layout="row">
+      <h2 class="md-toolbar-tools">
+        Editar Usuario
+      </h2>
+    </md-toolbar>
+    <md-content layout-padding="layout-padding">
+      <form name="editUserCtrl.editUserForm" novalidate ng-submit="editUserCtrl.editUserForm.$valid && editUserCtrl.saveChanges()">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Tipo</label>
+            <md-select ng-model="editUserCtrl.user.idType" name="idType" required>
+              <md-option value="v">
+                V
+              </md-option>
+              <md-option value="e">
+                E
+              </md-option>
+              <md-option value="p">
+                P
+              </md-option>
+              <md-option value="j">
+                J
+              </md-option>
+            </md-select>
+             <form-validation errors="editUserCtrl.editUserForm.idType.$error">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Cedula</label>
+            <input ng-model="editUserCtrl.user.idNumber" name="idNumber" type="number" maxlength="8" minlength="7" required>
+            <form-validation errors="editUserCtrl.editUserForm.idType.$error">
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+          <label>Nombre</label>
+          <input ng-model="editUserCtrl.user.firstName" name="name" maxlength="25" minlength="3" required>
+          <form-validation errors="editUserCtrl.editUserForm.name.$error">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Apellido</label>
+          <input ng-model="editUserCtrl.user.lastName" name="lastName" maxlength="25" minlength="3" required>
+          <form-validation errors="editUserCtrl.editUserForm.lastName.$error">
+        </md-input-container>
+        <div layout="row" layout-sm="column" layout-align="center center">
+          <md-button type="submit" class="md-raised md-primary">
+            Guardar
+          </md-button>
+          <md-button class="md-raised" ng-href="home">
+            Salir
+          </md-button>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>

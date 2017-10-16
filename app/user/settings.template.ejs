@@ -1,0 +1,14 @@
+<md-bottom-sheet class="md-list md-has-header">
+  <md-list>
+    <md-subheader class="md-no-sticky">
+      Configuración
+    </md-subheader>
+    <md-divider></md-divider>
+    <md-list-item>
+      <md-icon md-svg-icon="/bower_components/material-design-icons/action/svg/production/ic_visibility_48px.svg"></md-icon>
+      <p>Animaciones</p>
+      <md-switch ng-change="settingsCtrl.onChangeAnimation()" ng-model="settingsCtrl.animations" aria-label="animations">
+      </md-switch>
+    </md-list-item>
+  </md-list>
+</md-bottom-sheet>

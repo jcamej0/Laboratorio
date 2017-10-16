@@ -1,0 +1,111 @@
+createBreed:
+  x-swagger-router-controller: breed
+  post:
+    description: Create breed
+    operationId: createBreed
+    produces:
+    - application/json
+    parameters:
+    - name: breed
+      in: body
+      description: Breed to be created
+      required: true
+      schema:
+        $ref: "model.yaml#/BreedModelCreate"
+    responses:
+      '200':
+        description: Breed Data
+        schema:
+          $ref: "model.yaml#/BreedModel"  
+      '409':
+        description: Duplicated breed with the same email
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  get:
+    description: Get all the breeds
+    operationId: getAllBreeds
+    produces:
+    - application/json
+    responses:
+      '200':
+        description: Breeds Data
+        schema:
+          type: array
+          items:
+            $ref: "model.yaml#/BreedModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+getBreed:
+  x-swagger-router-controller: breed
+  get:
+    description: Get breed base in UID
+    operationId: getBreed
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: The id of the breed that is requested
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Breed Data
+        schema:
+          $ref: "model.yaml#/BreedModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  delete:
+    description: Delete breed base in UID
+    operationId: deleteBreed
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: Id of the breed to delete
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Breed Data
+        schema:
+          $ref: "model.yaml#/DeleteBreedModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  put:
+    description: Modify breed based on his UID
+    operationId: modifyBreed
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: Id of the breed to modify
+      required: true
+      type: string
+    - name: data
+      in: body
+      description: Data to modify the cient
+      required: true
+      schema:
+        $ref: "model.yaml#/ModifyBreedModel"
+    responses:
+      '200':
+        description: Success message confirmation
+        schema:
+          $ref: "model.yaml#/ModifyBreedModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"

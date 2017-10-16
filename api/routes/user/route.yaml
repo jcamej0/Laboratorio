@@ -1,0 +1,217 @@
+invite:
+  x-swagger-router-controller: user
+  post:
+    description: Invites a user to the plataform
+    operationId: invite
+    security:
+    - oauth2: [admin]
+    produces:
+    - application/json
+    parameters:
+    - name: user
+      in: body
+      description: User to be created
+      required: true
+      schema:
+        $ref: "model.yaml#/UserModel"
+    responses:
+      '200':
+        description: User Data
+        schema:
+          $ref: "model.yaml#/SuccessResponse"  
+      '409':
+        description: Duplicated user with the same email
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+createUser:
+  x-swagger-router-controller: user
+  get:
+    description: Get all the user
+    operationId: getAll
+    security:
+    - oauth2: [admin]
+    produces:
+    - application/json
+    responses:
+      '200':
+        description: User Data
+        schema:
+          type: array
+          items:
+            $ref: "model.yaml#/UserModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  post:
+    description: Create user
+    operationId: create
+    produces:
+    - application/json
+    parameters:
+    - name: user
+      in: body
+      description: User to be created
+      required: true
+      schema:
+        $ref: "model.yaml#/UserModelCreate"
+    responses:
+      '200':
+        description: User Data
+        schema:
+          $ref: "model.yaml#/UserModel"  
+      '409':
+        description: Duplicated user with the same email
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+getMe:
+  x-swagger-router-controller: user
+  get:
+    description: Get user based in his token
+    operationId: getMe
+    security:
+    - oauth2: []
+    produces:
+    - application/json
+    responses:
+      '200':
+        description: User Data
+        schema:
+          $ref: "model.yaml#/UserModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  put:
+    description: Set user data based in his token
+    operationId: putMe
+    security:
+    - oauth2: []
+    produces:
+    - application/json
+    parameters:
+    - name: user
+      in: body
+      description: User to be created
+      required: true
+      schema:
+        $ref: "model.yaml#/UserModelUpdate"
+    responses:
+      '200':
+        description: User Data
+        schema:
+          $ref: "model.yaml#/UserModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+changePassword:
+  x-swagger-router-controller: user
+  patch:
+    description: Change a user password
+    operationId: setPassword
+    security:
+    - oauth2: [password]
+    produces:
+    - application/json
+    parameters:
+    - name: data
+      in: body
+      description: new password to be seet
+      required: true
+      schema:
+        $ref: "model.yaml#/SetPassModel"
+    responses:
+      '200':
+        description: User Data
+        schema:
+          $ref: "model.yaml#/SuccessResponse"  
+      '409':
+        description: Duplicated user with the same email
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  put:
+    description: Change user password base on email
+    operationId: changePassword
+    security:
+    - oauth2: []
+    produces:
+    - application/json
+    parameters:
+    - name: data
+      in: body
+      description: Data to change the password
+      required: true
+      schema:
+        $ref: "model.yaml#/ChangePassModel"
+    responses:
+      '200':
+        description: Success message confirmation
+        schema:
+          $ref: "model.yaml#/SuccessResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+getUser:
+  x-swagger-router-controller: user
+  get:
+    description: Get user base in UID
+    operationId: get
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: The id of the user that is going to be updated
+      required: true
+      type: string
+    responses:
+      '200':
+        description: User Data
+        schema:
+          $ref: "model.yaml#/UserModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+settings:
+  x-swagger-router-controller: user
+  post:
+    description: Get user base in UID and updated settings
+    operationId: updateSettings
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: The id of the user that is going to be updated
+      required: true
+      type: string
+    - name: settings
+      in: body
+      description: Settings that are going to be updated
+      required: true
+      schema:
+        $ref: "model.yaml#/SettingsModel"
+    responses:
+      '200':
+        description: Settings Data
+        schema:
+          $ref: "model.yaml#/SettingsModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"

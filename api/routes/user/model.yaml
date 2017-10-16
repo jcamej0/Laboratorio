@@ -1,0 +1,114 @@
+UserModel:
+  required:
+    - email
+    - idNumber
+    - idType
+    - firstName
+    - lastName
+  properties:
+    email:
+      type: string
+      format: email
+    password:
+      type: string
+      format: password
+    idNumber:
+      type: integer
+      format: int32
+    idType:
+      type: string
+      enum:
+      - v
+      - e
+      - j
+      - p
+    firstName:
+      type: string
+    lastName:
+      type: string
+    lastLogin:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+    createdAt:
+      type: string
+      format: date-time
+ChangePassModel:
+  required:
+    - oldPassword
+    - newPassword
+  properties:
+    email:
+      "$ref": "#/UserModel/properties/email"
+    oldPassword:
+      "$ref": "#/UserModel/properties/password"
+    newPassword:
+      "$ref": "#/UserModel/properties/password"
+SetPassModel:
+  required:
+    - password
+  properties:
+    email:
+      "$ref": "#/UserModel/properties/email"
+    password:
+      "$ref": "#/UserModel/properties/password"
+SettingsModel:
+  properties:
+    animations:
+      type: boolean
+UserModelUpdate:
+  properties:
+    idNumber:
+      "$ref": "#/UserModel/properties/idNumber"
+    idType:
+      "$ref": "#/UserModel/properties/idType"
+    firstName:
+      "$ref": "#/UserModel/properties/firstName"
+    lastName:
+      "$ref": "#/UserModel/properties/lastName"
+UserLogin:
+  required:
+    - email
+    - idNumber
+    - idType
+    - firstName
+    - lastName
+  properties:
+    email:
+      "$ref": "#/UserModel/properties/email"
+    idNumber:
+      "$ref": "#/UserModel/properties/idNumber"
+    idType:
+      "$ref": "#/UserModel/properties/idType"
+    firstName:
+      "$ref": "#/UserModel/properties/firstName"
+    lastName:
+      "$ref": "#/UserModel/properties/lastName"
+    lastLogin:
+      "$ref": "#/UserModel/properties/lastLogin"
+UserModelCreate:
+  required:
+    - email
+    - password
+    - idNumber
+    - idType
+    - firstName
+    - lastName
+  properties:
+    email:
+      "$ref": "#/UserModel/properties/email"
+    password:
+      "$ref": "#/UserModel/properties/password"
+    idNumber:
+      "$ref": "#/UserModel/properties/idNumber"
+    idType:
+      "$ref": "#/UserModel/properties/idType"
+    firstName:
+      "$ref": "#/UserModel/properties/firstName"
+    lastName:
+      "$ref": "#/UserModel/properties/lastName"
+    lastLogin:
+      "$ref": "#/UserModel/properties/lastLogin"
+$ref: ../responses.yaml

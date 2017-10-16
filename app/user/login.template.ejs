@@ -1,0 +1,36 @@
+<div layout-fill="layout-fill" layout="row" layout-align="center center">
+  <md-whiteframe class="md-whiteframe-4dp">
+    <md-toolbar class="md-primary" layout="row">
+      <h2 class="md-toolbar-tools">
+        Login
+      </h2>
+    </md-toolbar>
+    <md-content layout-padding="layout-padding">
+      <form name="loginCtrl.loginForm" novalidate ng-submit="loginCtrl.loginForm.$valid && loginCtrl.login()">
+        <md-input-container>
+          <label>User</label>
+          <input ng-model="loginCtrl.user" name="user" ng-minlength="5" ng-maxlength="50" required/>
+          <form-validation errors="loginCtrl.loginForm.user.$error">
+        </md-input-container>
+        <md-input-container>
+          <label>Password</label>
+          <input ng-model="loginCtrl.password" type="password" name="password" ng-minlength="6" ng-maxlength="25" required/>
+          <form-validation errors="loginCtrl.loginForm.password.$error">
+        </md-input-container>
+        <div layout="row" layout-sm="column" layout-align="center center">
+          <md-checkbox ng-model="loginCtrl.remind" aria-label="Recordarme" class="md-primary" ng-change="loginCtrl.remindUser()">
+            Recordarme
+          </md-checkbox>
+        </div>
+        <div layout="row" layout-sm="column" layout-align="center center">
+          <md-button type="submit" class="md-raised md-primary">
+            Login
+          </md-button>
+          <md-button class="md-raised">
+            Leave
+          </md-button>
+        </div>
+      </form>
+    </md-content>
+  </md-whiteframe>
+</div>

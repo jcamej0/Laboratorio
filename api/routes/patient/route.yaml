@@ -1,0 +1,111 @@
+createPatient:
+  x-swagger-router-controller: patient
+  post:
+    description: Create patient
+    operationId: createPatient
+    produces:
+    - application/json
+    parameters:
+    - name: patient
+      in: body
+      description: Patient to be created
+      required: true
+      schema:
+        $ref: "model.yaml#/PatientModelCreate"
+    responses:
+      '200':
+        description: Patient Data
+        schema:
+          $ref: "model.yaml#/PatientModel"  
+      '409':
+        description: Duplicated patient with the same email
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  get:
+    description: Get all the patients
+    operationId: getAllPatients
+    produces:
+    - application/json
+    responses:
+      '200':
+        description: Patients Data
+        schema:
+          type: array
+          items:
+            $ref: "model.yaml#/PatientModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+getPatient:
+  x-swagger-router-controller: patient
+  get:
+    description: Get patient base in UID
+    operationId: getPatient
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: The id of the patient that is requested
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Patient Data
+        schema:
+          $ref: "model.yaml#/PatientModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  delete:
+    description: Delete patient base in UID
+    operationId: deletePatient
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: Id of the patient to delete
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Patient Data
+        schema:
+          $ref: "model.yaml#/DeletePatientModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  put:
+    description: Modify patient based on his UID
+    operationId: modifyPatient
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: Id of the patient to modify
+      required: true
+      type: string
+    - name: data
+      in: body
+      description: Data to modify the cient
+      required: true
+      schema:
+        $ref: "model.yaml#/ModifyPatientModel"
+    responses:
+      '200':
+        description: Success message confirmation
+        schema:
+          $ref: "model.yaml#/ModifyPatientModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"

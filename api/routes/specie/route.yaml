@@ -1,0 +1,111 @@
+createSpecie:
+  x-swagger-router-controller: specie
+  post:
+    description: Create specie
+    operationId: createSpecie
+    produces:
+    - application/json
+    parameters:
+    - name: specie
+      in: body
+      description: Specie to be created
+      required: true
+      schema:
+        $ref: "model.yaml#/SpecieModelCreate"
+    responses:
+      '200':
+        description: Specie Data
+        schema:
+          $ref: "model.yaml#/SpecieModel"  
+      '409':
+        description: Duplicated specie with the same email
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  get:
+    description: Get all the species
+    operationId: getAllSpecies
+    produces:
+    - application/json
+    responses:
+      '200':
+        description: Species Data
+        schema:
+          type: array
+          items:
+            $ref: "model.yaml#/SpecieModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+getSpecie:
+  x-swagger-router-controller: specie
+  get:
+    description: Get specie base in UID
+    operationId: getSpecie
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: The id of the specie that is requested
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Specie Data
+        schema:
+          $ref: "model.yaml#/SpecieModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  delete:
+    description: Delete specie base in UID
+    operationId: deleteSpecie
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: Id of the specie to delete
+      required: true
+      type: string
+    responses:
+      '200':
+        description: Specie Data
+        schema:
+          $ref: "model.yaml#/DeleteSpecieModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
+  put:
+    description: Modify specie based on his UID
+    operationId: modifySpecie
+    produces:
+    - application/json
+    parameters:
+    - name: id
+      in: path
+      description: Id of the specie to modify
+      required: true
+      type: string
+    - name: data
+      in: body
+      description: Data to modify the cient
+      required: true
+      schema:
+        $ref: "model.yaml#/ModifySpecieModel"
+    responses:
+      '200':
+        description: Success message confirmation
+        schema:
+          $ref: "model.yaml#/ModifySpecieModel"
+      default:
+        description: Error payload
+        schema:
+          "$ref": "model.yaml#/ErrorResponse"
